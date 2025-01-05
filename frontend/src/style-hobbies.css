@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    transition: background-color 0.5s;
+}
+
+.light-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    background-image: url('./assets/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.blur{
+    backdrop-filter: blur(5px);
+    /*background-color: #e0e0e0 !important;*/
+}
+
+.dark-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    background-image: url('./assets/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+#theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.light-icon {
+    display: block;
+}
+
+.dark-icon {
+    display: none;
+}
+
+header {
+    background: linear-gradient(135deg, #1f1f1f, #333) !important;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+.content {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #bb86fc;
+}
+
+.rating .fa-star {
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating .fa-star.checked {
+    color: gold;
+}
+
+.rating .fa-star:hover {
+    color: orange;
+    transform: rotateY(180deg);
+}
+
+/* Upravené štýly pre kartu */
+.card {
+    background-color: #2c2c2c2d; /* Tmavé pozadie pre kartu */
+    color: #e0e0e0; /* Svetlá farba textu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 8px;
+    margin: 10px; /* Pridajte margin na rozostupy medzi kartami */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-body h5.card-title {
+    color: #ffffff !important; /* Svetlejšia farba pre názov */
+    font-weight: bold;
+}
+
+.card-body p {
+    color: #d1d1d1 !important; /* Svetlejšia farba pre priezvisko */
+    font-weight: bold;
+}
+
+.card-title {
+    color: #bb86fc;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #bb86fc; /* Nastavenie svetlej farby pre tlačidlo */
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Pridajte trochu vnútornej vzdialenosti pre lepší vzhľad */
+    display: flex; /* Nastavenie Flexbox pre zarovnanie textu */
+    justify-content: center; /* Horizontálne zarovnanie na stred */
+    align-items: center; /* Vertikálne zarovnanie na stred */
+    cursor: pointer; /* Zmena kurzora pri prechode nad tlačidlom */
+    text-align: center; /* Uistite sa, že text je zarovnaný na stred */
+}
+
+
+.logo {
+    width: 100%; /* Nastaví šírku obrázku na 100% šírky rodičovského kontajnera */
+    max-width: 500px; /* Maximálna šírka obrázku bude 500px */
+    height: auto; /* Umožní zachovať proporcie obrázku */
+    margin-bottom: 10px; /* Medzera pod logom */
+}
+
+
+footer {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    color: #bb86fc;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
+}
+
+.social-icon {
+    width: 24px; /* Adjust the size of the icons */
+    height: 24px;
+    margin: 0 10px; /* Space between icons */
+    vertical-align: middle;
+    color: #ffffffdc;
+    filter: invert(1);
+  }
+  
+  .social-links a:hover .social-icon {
+    opacity: 0.8; /* Slight opacity change on hover */
+  }
+
+  .social-links a {
+    text-decoration: none !important;
+    border: none !important;
+    color: inherit !important;
+  }
+  
+
+  .app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .modal-body{
+    color:white;
+    background-color:#1f1f1f ;
+  }
+  .modal-header{
+    color:white;
+    background-color:#1f1f1f ;
+  }
+  
+  .modal-footer{
+    background-color: #1f1f1f !important;
+  }
+ 
+  .btn-secondary{
+    background-color: #bb86fc; /* Nastavenie svetlej farby pre tlačidlo */
+    color: #fff;
+    border: none;
+  }
+
+
+  
+ 
+  

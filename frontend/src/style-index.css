@@ -1,0 +1,735 @@
+/* Загальні налаштування */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    transition: background-color 2s; /* hladký prechod */
+    width: 100%;
+}
+
+html{
+    width:100%;
+}
+
+.light-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Zmeň farbu pozadia */
+    background-image: url('./assets/images/background.jpg'); /* Zmeň cestu na svoj obrázok */
+    background-size: cover; /* Uprav, aby sa obrázok prispôsobil */
+    background-position: center; /* Umiestni obrázok na stred */
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.dark-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Zmeň farbu pozadia */
+    background-image: url('./assets/images/background_black.png'); /* Zmeň cestu na svoj obrázok */
+    background-size: cover; /* Uprav, aby sa obrázok prispôsobil */
+    background-position: center; /* Umiestni obrázok na stred */
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+#theme-switch {
+    position: fixed;
+    top: 20px; /* vzdialenosť od vrchu */
+    right: 20px; /* vzdialenosť od pravej strany */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* aby bolo vždy nad inými prvkami */
+}
+
+.light-icon {
+    display: block; /* ikona pre svetlý režim */
+}
+
+.dark-icon {
+    display: none; /* skrytá ikona pre tmavý režim */
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1f1f1f, #333) !important;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+/* Анімація з’явлення */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Course Grid */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    opacity: 0; /* Початковий стан: невидимий */
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.6s ease-out forwards; /* Анімація */
+    transform: translateY(20px); /* Початкове зміщення вниз */
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.course-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.course-card:hover .course-image {
+    opacity: 0.8;
+}
+
+.course-content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    width: 100%;
+    padding: 15px;
+    transition: transform 0.3s;
+    transform: translateY(100%);
+}
+
+.course-card:hover .course-content {
+    transform: translateY(0);
+}
+
+.course-content h3 {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.course-content p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #bfbfbf;
+}
+
+/* Додамо затримку для анімації з’явлення на кожному елементі */
+.course-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.course-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.course-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.course-card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+/* Кнопки */
+.btn-primary {
+    background: linear-gradient(135deg, #8e24aa, #bb86fc);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #7b1fa2, #9d67d4);
+    transform: scale(1.05);
+}
+
+/* Course Labels */
+.course-labels {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.label.programming { background-color: #333; }
+.label.python { background-color: #3b82f6; }
+.label.dev { background-color: #22c55e; }
+.label.english { background-color: #16a34a; }
+.label.count { background-color: #bb86fc; color: #292929; }
+
+/* Додаткові секції */
+.info-section {
+    background-color: #000000dc;
+    color: #e0e0e0;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-section h2 {
+    color: #bb86fc;
+    margin-bottom: 15px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.testimonial {
+    flex: 1 1 calc(45% - 20px);
+    margin: 10px;
+    background: #000000dc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+blockquote {
+    margin: 0;
+    font-style: italic;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+
+
+#feedback-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+#feedback-form label, #feedback-form input, #feedback-form textarea, #feedback-form button {
+    margin-bottom: 10px;
+}
+
+#feedback-form button {
+    align-self: flex-start;
+}
+
+/* Footer */
+footer {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    color: #bb86fc;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
+}
+
+/* Адаптивність для менших екранів */
+@media (max-width: 768px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.form-container {
+    max-width: 450px; /* Zvýš šírku */
+    width: 90%; /* Zabezpečí, že sa prispôsobí šírke kontajnera */
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.6s ease-out;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    color: #bb86fc;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.form-container input, .form-container select {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #e0e0e0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-container input:focus, .form-container select:focus {
+    outline: none;
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+.form-container button {
+    background-color: #bb86fc;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #9d67d4;
+    transform: scale(1.1);
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInEffect 0.6s forwards;
+}
+
+@keyframes fadeInEffect {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-out {
+    opacity: 1;
+    animation: fadeOutEffect 0.5s forwards;
+}
+
+@keyframes fadeOutEffect {
+    to {
+        opacity: 0;
+    }
+}
+.confirmation-message {
+    background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+    color: #004d40;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.6s ease-out;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confirmation-message p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #004d40;
+    line-height: 1.5;
+}
+
+/* Стиль для кнопки повернення */
+.btn-secondary {
+    display: inline-block;
+    background: linear-gradient(135deg, #8e24aa, #7b1fa2);
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 8px 15px rgba(142, 36, 170, 0.4);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #7b1fa2, #6a1b9a);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(142, 36, 170, 0.5);
+}
+
+/* Анімація для плавного з'явлення */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Navigation Arrows Styling */
+.course-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.nav-arrow {
+    display: flex;
+    align-items: center;
+    background-color: #bb86fc;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-arrow .arrow-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+}
+
+.nav-arrow:hover {
+    background-color: #9d67d4;
+}
+
+.prev-icon {
+    transform: rotate(180deg);
+}
+
+
+/* Course Wrapper to enable slide effect */
+.course-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.course-grid {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.course-card {
+    min-width: 100%; /* To make only one card visible at a time */
+}
+
+.logo {
+    width: 100%; /* Nastaví šírku obrázku na 100% šírky rodičovského kontajnera */
+    max-width: 500px; /* Maximálna šírka obrázku bude 500px */
+    height: auto; /* Umožní zachovať proporcie obrázku */
+    margin-bottom: 10px; /* Medzera pod logom */
+}
+
+.info-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    border-radius: 8px;
+}
+
+/* About section */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    line-height: 1.6;
+}
+
+/* FAQ section */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.testimonial {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+blockquote {
+    font-style: italic;
+    margin: 0;
+}
+
+footer {
+    margin-top: 10px;
+    text-align: right;
+    color: #bb86fc;
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/*Päta pre registračný formulár*/
+.footer-container {
+    display: block; 
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    color: #bb86fc;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
+}
+
+footer {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
+}
+
+
+
+
+
+
+
+
+
+.info-section {
+    position: relative;
+    padding: 20px;
+    background-color: #000000dc;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .info-section h2 {
+    font-size: 1.5em;
+    text-align: left;
+    color: #dad5d5;
+    transition: transform 0.3s ease;
+  }
+  
+  .info-section .content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .info-section:hover .content {
+    opacity: 1;
+    max-height: 500px; /* Adjust based on content */
+  }
+  
+  .info-section:hover h2 {
+    transform: translateY(-10px);
+  }
+  
+  .faq-section {
+    background-color: #000000dc;
+    color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0;
+    border-radius: 8px;
+  }
+  
+  .faq-section h2 {
+    font-size: 1.8em;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    font-size: 0.9em;
+    color: #ccc;
+    padding: 0 0 10px 0;
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 200px; /* Adjust based on the answer length */
+    opacity: 1;
+  }
+  
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item.active .arrow {
+    transform: rotate(180deg);
+  }
+  
+  .icon {
+    width: 24px; /* Set the desired width */
+    height: 24px; /* Set the desired height */
+    vertical-align: left; /* Align it with the text */
+    margin-left: 5px; /* Add some space between the text and icon */
+  }
+
+  .social-icon {
+    width: 24px; /* Adjust the size of the icons */
+    height: 24px;
+    margin: 0 10px; /* Space between icons */
+    vertical-align: middle;
+    color: #ffffffdc;
+    filter: invert(1);
+  }
+  
+  .social-links a:hover .social-icon {
+    opacity: 0.8; /* Slight opacity change on hover */
+  }
+
+  .social-links a {
+    text-decoration: none !important;
+    border: none !important;
+    color: inherit !important;
+  }
+  
+  .app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+  }
+

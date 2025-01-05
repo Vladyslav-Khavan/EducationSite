@@ -1,0 +1,102 @@
+.vypis-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    color: #ffffff;
+    max-width: 90%; 
+    margin-left: 5%; 
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 0; 
+  }
+  
+  
+  .user-table th,
+  .user-table td {
+    border: 1px solid #555555;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .user-table th {
+    background-color: #333333;
+    color: #bb86fc;
+  }
+  
+  .user-table tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filters input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .filters button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: purple;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .filters button:hover {
+    background-color: #0056b3;
+  }
+  
+  .user-table th {
+    cursor: pointer;
+  }
+  
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.activate-btn {
+  background-color: #4caf50; 
+  color: white;
+}
+
+.activate-btn:hover {
+  background-color: #45a049;
+}
+
+.deactivate-btn {
+  background-color: #f44336; 
+  color: white;
+}
+
+.deactivate-btn:hover {
+  background-color: #e53935;
+}
+
+.delete-btn {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #7b1fa2;
+}
+
+  

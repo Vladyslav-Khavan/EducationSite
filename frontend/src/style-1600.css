@@ -1,0 +1,66 @@
+@media (min-width: 1301px) and (max-width: 1600px) {
+    body {
+        background-color: #a3a3a3;
+        font-size: 20px;
+        line-height: 1.9;
+    }
+
+    h1, h2, h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        gap: 25px;
+    }
+
+    .button {
+        background-color: #ff5722;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+
+    .button:hover {
+        transform: scale(1.05);
+    }
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* skryje horizontálny posuvník */
+}
+
+.user-table-container {
+    overflow-x: auto; /* Дозволяє горизонтальний скролінг */
+  }
+  
+  .user-table {
+    min-width: 1200px; /* Мінімальна ширина таблиці */
+    width: 100%; /* Зберігає адаптивність */
+    border-collapse: collapse;
+  }
+  
+  .user-table th,
+  .user-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #555555;
+  }
+  
+  .user-table th {
+    background-color: #333333;
+    color: #bb86fc;
+  }
+  
+  .user-table tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  

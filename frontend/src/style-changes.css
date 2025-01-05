@@ -1,0 +1,410 @@
+/* Загальні налаштування */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    transition: background-color 0.5s; /* hladký prechod */
+    width: 100%;
+    overflow-x: hidden; /* skryje horizontálny posuvník */
+}
+
+.light-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Zmeň farbu pozadia */
+    background-image: url('./assets/images/background.jpg'); /* Zmeň cestu na svoj obrázok */
+    background-size: cover; /* Uprav, aby sa obrázok prispôsobil */
+    background-position: center; /* Umiestni obrázok na stred */
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.dark-mode {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Zmeň farbu pozadia */
+    background-image: url('./assets/images/background_black.png'); /* Zmeň cestu na svoj obrázok */
+    background-size: cover; /* Uprav, aby sa obrázok prispôsobil */
+    background-position: center; /* Umiestni obrázok na stred */
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+#theme-switch {
+    position: fixed;
+    top: 20px; /* vzdialenosť od vrchu */
+    right: 20px; /* vzdialenosť od pravej strany */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* aby bolo vždy nad inými prvkami */
+}
+
+.light-icon {
+    display: block; /* ikona pre svetlý režim */
+}
+
+.dark-icon {
+    display: none; /* skrytá ikona pre tmavý režim */
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1f1f1f, #333) !important;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+/* Content */
+.content {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin:10px;
+    margin-left: 180px;
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #bb86fc;
+}
+
+/* Responsive Design for Text */
+.size-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Sizebar Container */
+.sizebar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.sizebar-container label {
+    font-size: 1rem;
+    color: #bb86fc;
+    margin-bottom: 10px;
+}
+
+/* Control Buttons */
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resize-btn {
+    background-color: #bb86fc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+    transition: background-color 0.3s;
+}
+
+.resize-btn:hover {
+    background-color: #9b68e4;
+}
+
+/* Style for Slider */
+#sizeSlider {
+    width: 100%;
+    max-width: 300px;
+    height: 12px;
+    background: #333;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.3s, background-color 0.3s;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#sizeSlider:hover {
+    opacity: 1;
+    background-color: #444;
+}
+
+#sizeSlider::before {
+    content: attr(data-size);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: #bb86fc;
+    background: #222;
+    padding: 2px 6px;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* Thumb for Slider */
+#sizeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #bb86fc;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+}
+
+#sizeSlider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #bb86fc;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+}
+
+/* Labels below the slider */
+.sizebar-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    opacity: 0.8;
+}
+
+.btn-primary {
+    display: flex;
+    background-color: #bb86fc;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+    text-align: center !important;
+}
+
+.logo {
+    width: 100%; /* Nastaví šírku obrázku na 100% šírky rodičovského kontajnera */
+    max-width: 500px; /* Maximálna šírka obrázku bude 500px */
+    height: auto; /* Umožní zachovať proporcie obrázku */
+    margin-bottom: 10px; /* Medzera pod logom */
+}
+
+footer {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    color: #bb86fc;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
+}
+
+
+/* Sizebar Container (fixed on the left side) */
+.sizebar-container {
+    position: fixed;
+    top: 200px; /* pridajte viac priestoru od vrchu */
+    bottom: 120px; /* pridajte viac priestoru odspodu */
+    left: 20px;
+    width: 140px;
+    max-height: calc(100vh - 240px); /* znížte výšku medzi hlavičkou a pätou */
+    background-color: rgba(31, 31, 31, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto; /* umožní posúvanie obsahu, ak presiahne výšku */
+    font-size: 10px !important;
+    
+}
+
+@media (max-width: 600px) {
+    .sizebar-container{
+        position: inherit;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .content{
+        margin-left: 10px;
+    }
+}
+
+
+
+/* Style for Control Buttons and Slider to Fit in Sizebar */
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#sizeSlider {
+    width: 100%;
+}
+
+#sekcia_zmena img {
+    width: 100%;         /* Obrázok bude štandardne zaberať celú šírku sekcie */
+    max-width: 150px;    /* Nastavíme maximálnu šírku obrázka pre bežnú veľkosť */
+    height: auto;        /* Zachováme pomer strán */
+    transition: width 0.3s ease; /* Hladký prechod pri zmene veľkosti */
+}
+
+/* Prispôsobenie veľkosti pre rôzne úrovne textu */
+#sekcia_zmena.large img {
+    max-width: 150px;  /* Nastavíme väčšiu maximálnu šírku pre veľký text */
+}
+
+#sekcia_zmena.medium img {
+    max-width: 100px;  /* Štandardná veľkosť obrázka */
+}
+
+#sekcia_zmena.small img {
+    max-width: 50px;  /* Menšia veľkosť obrázka pre malý text */
+}
+
+
+/* Reset a základný štýl */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    padding: 20px;
+}
+
+#sekcia_zmena h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Karta */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    color:white;
+}
+
+.card h6 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Flexibilita a responzívnosť */
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.social-icon {
+    width: 24px; /* Adjust the size of the icons */
+    height: 24px;
+    margin: 0 10px; /* Space between icons */
+    vertical-align: middle;
+    color: #ffffffdc;
+    filter: invert(1);
+  }
+  
+  .social-links a:hover .social-icon {
+    opacity: 0.8; /* Slight opacity change on hover */
+  }
+  
+  .social-links a {
+    text-decoration: none !important;
+    border: none !important;
+    color: inherit !important;
+  }
+  
+
+  .app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .center-image {
+    display: grid;
+    place-items: center; /* Centrum v horizontálnom aj vertikálnom smere */       /* Výška kontajnera (prípadne nastav podľa potreby) */
+}
+
